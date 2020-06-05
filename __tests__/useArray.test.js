@@ -38,6 +38,22 @@ describe('useArray', () => {
     expect(result.current.value.length).toBe(1);
   });
 
+  it('should filter item by spesific atributtes', () => {
+    const { result } = renderHook(() => useArray([
+      { id: 1, city: 'jakarta', country: 'indonesia' },
+      { id: 2, city: 'palembang', country: 'indonesia' },
+      { id: 3, city: 'surabaya', country: 'indonesia' },
+      { id: 4, city: 'serawak', country: 'malaysia' },
+    ]));
+
+    const { filterItem } = result.current;
+    expect(result.current.value.length).toBe(4);
+
+    act(() => filterItem('indonesia', 'country'));
+
+    expect(result.current.value.length).toBe(3);
+  });
+
   it('should clear the array', () => {
     const { result } = renderHook(() => useArray([1, 2, 3, 4, 5]));
     const { clear } = result.current;

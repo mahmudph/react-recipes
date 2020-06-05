@@ -14,6 +14,7 @@ Manipulate and read an Array
   clear,
   removeIndex,
   removeById,
+  filterItem.
   value,
   setValue
 }
@@ -29,6 +30,7 @@ function App {
     add,
     clear,
     removeIndex,
+    filterItem
     removeById,
     value: currentArray
   } = useArray(['cat','dog','bird']);

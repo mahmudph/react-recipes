@@ -9,23 +9,26 @@ const useArray = initial => {
     clear: useCallback(() => setValue(() => []), []),
     removeById: useCallback(id => setValue(arr => arr.filter(v => v && v.id !== id)), []),
     removeIndex: useCallback(index => setValue(arr => arr.filter((v, i) => i !== index)), []),
+    filterItem: useCallback((key, atr) => setValue(arr => arr.filter(v => v[atr] === key)), []),
   };
 };
 
 export default useArray;
 
 // Usage
-
+// filter item only used when staet is arrtay with object data type
 // const App = () => {
 //   const {
 //     add,
 //     clear,
 //     removeIndex,
-//     value: currentArray
+//     filterItem
+//     value: currentArray,
 //   } = useArray(['cat','dog','bird']);
 
 //   return (
 //     <>
+//
 //       <button onClick={() => add('tiger')}>Add animal</button>
 //       <button onClick={() => removeIndex(2)}>Remove Bird</button>
 //       <button onClick={clear}>clear</button>
